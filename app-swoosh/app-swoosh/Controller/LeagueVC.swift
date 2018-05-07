@@ -10,23 +10,36 @@ import UIKit
 
 class LeagueVC: UIViewController {
 
+    // Making this an implicitly unwrapped optional because we don't even want this code to run without a player
+    var player: Player!
+    
+    @IBOutlet weak var nextBtn: BorderButton!
+    
+    // Next is disabled by default until a button is pressed.
     @IBAction func onNextTapped(_ sender: Any) {
         performSegue(withIdentifier: "skillVCSegue", sender: self)
     }
+    
+    // For these buttons, the user makes a choice (which league)
+    // and the next button becomes enabled
+    @IBAction func onMensTapped(_ sender: Any) {
+        selectLeague(leagueType: "mens")
+    }
+    @IBAction func onWomensTapped(_ sender: Any) {
+        selectLeague(leagueType: "womens")
+    }
+    @IBAction func onCoedTapped(_ sender: Any) {
+        selectLeague(leagueType: "coed")
+    }
+    
+    func selectLeague(leagueType: String) {
+        player.desiredLeague = leagueType
+        nextBtn.isEnabled = true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        player = Player()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
