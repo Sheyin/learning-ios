@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,6 +57,9 @@
                                 <state key="normal" title="GET STARTED">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="S0e-Be-wsf" kind="show" id="1yB-uh-ToZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,9 +101,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="desiredLeagueBG" translatesAutoresizingMaskIntoConstraints="NO" id="edw-kD-JXS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desiredLeagueBG" translatesAutoresizingMaskIntoConstraints="NO" id="edw-kD-JXS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="Wb4-cK-0LT">
                                 <rect key="frame" x="0.0" y="40" width="375" height="84.5"/>
@@ -165,6 +168,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELs-EQ-k0O">
+                                <rect key="frame" x="16" y="30" width="44" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Brv-yc-p8w"/>
+                                    <constraint firstAttribute="height" constant="33" id="qgY-Oj-NSJ"/>
+                                </constraints>
+                                <state key="normal" image="backButton"/>
+                                <connections>
+                                    <segue destination="4Xr-tg-Od0" kind="unwind" unwindAction="unwindFromSkillVCWithUnwindSegue:" id="b8u-CT-Rzf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -172,8 +186,14 @@
                             <constraint firstItem="Wb4-cK-0LT" firstAttribute="top" secondItem="cj1-9x-VAm" secondAttribute="top" constant="20" id="9qj-Ga-vRz"/>
                             <constraint firstItem="cj1-9x-VAm" firstAttribute="trailing" secondItem="gom-PR-dwa" secondAttribute="trailing" constant="16" id="Dv6-XP-yS5"/>
                             <constraint firstItem="vWI-KB-yRQ" firstAttribute="leading" secondItem="cj1-9x-VAm" secondAttribute="leading" constant="16" id="H0V-eI-vRb"/>
+                            <constraint firstItem="edw-kD-JXS" firstAttribute="trailing" secondItem="cj1-9x-VAm" secondAttribute="trailing" id="HEr-Wg-3OQ"/>
+                            <constraint firstItem="ELs-EQ-k0O" firstAttribute="leading" secondItem="cj1-9x-VAm" secondAttribute="leading" constant="16" id="Kwu-bK-Aqb"/>
                             <constraint firstItem="cj1-9x-VAm" firstAttribute="trailing" secondItem="Wb4-cK-0LT" secondAttribute="trailing" id="Pea-rH-gYi"/>
                             <constraint firstItem="gom-PR-dwa" firstAttribute="leading" secondItem="cj1-9x-VAm" secondAttribute="leading" constant="16" id="gUs-1C-B34"/>
+                            <constraint firstItem="edw-kD-JXS" firstAttribute="leading" secondItem="cj1-9x-VAm" secondAttribute="leading" id="gmo-F4-KRY"/>
+                            <constraint firstItem="edw-kD-JXS" firstAttribute="top" secondItem="kZs-MU-Fct" secondAttribute="top" id="hNM-s5-hBN"/>
+                            <constraint firstItem="edw-kD-JXS" firstAttribute="bottom" secondItem="cj1-9x-VAm" secondAttribute="bottom" id="lAh-v3-AFM"/>
+                            <constraint firstItem="ELs-EQ-k0O" firstAttribute="top" secondItem="kZs-MU-Fct" secondAttribute="topMargin" constant="10" id="rcC-jZ-v1x"/>
                             <constraint firstItem="cj1-9x-VAm" firstAttribute="trailing" secondItem="vWI-KB-yRQ" secondAttribute="trailing" constant="16" id="sAq-YM-AnL"/>
                             <constraint firstItem="Wb4-cK-0LT" firstAttribute="leading" secondItem="cj1-9x-VAm" secondAttribute="leading" id="x8e-u7-NMt"/>
                             <constraint firstItem="cj1-9x-VAm" firstAttribute="bottom" secondItem="vWI-KB-yRQ" secondAttribute="bottom" constant="20" id="zjj-uS-vu3"/>
@@ -182,6 +202,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqK-FW-Vbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4Xr-tg-Od0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="828" y="120.98950524737631"/>
         </scene>
@@ -272,6 +293,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backButton" width="29" height="24"/>
         <image name="beginnerBallerBG" width="414" height="736"/>
         <image name="desiredLeagueBG" width="414" height="736"/>
         <image name="swooshLogo" width="119" height="20"/>
