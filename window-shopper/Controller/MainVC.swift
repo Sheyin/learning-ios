@@ -12,6 +12,17 @@ class MainVC: UIViewController {
 
     @IBOutlet weak var wageTxt: CurrencyTxtField!
     @IBOutlet weak var priceTxt: CurrencyTxtField!
+    @IBOutlet weak var resultLbl: UILabel!
+    @IBOutlet weak var hoursLbl: UILabel!
+    @IBAction func clearCalculatorPressed(_ sender: Any) {
+        // when clear button is pressed, hide the other labels, reset numbers
+        resultLbl.isHidden = true
+        hoursLbl.isHidden = true
+        wageTxt.text = ""
+        priceTxt.text = ""
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +36,23 @@ class MainVC: UIViewController {
         // setting this function as the accessory view
         wageTxt.inputAccessoryView = calcBtn
         priceTxt.inputAccessoryView = calcBtn
+        resultLbl.isHidden = true
+        hoursLbl.isHidden = true
     }
 
     @objc func calculate() {
-        print("calculate ran!")
+        // This only runs if the fields are not nil (have something)
+        if let wageTxt = wageTxt.text, let priceTxt = priceTxt.text {
+            // This attempts to cast the values in doubles, if it fails, there is something like a letter etc = false
+            if let wage = Double(wageTxt), let price = Double(priceTxt) {
+                // dismiss the keyboard as it is no longer needed
+                view.endEditing(true)
+                // Show the labels when done
+                resultLbl.isHidden = false
+                hoursLbl.isHidden = false
+                resultLbl.text = "\(Wage.getHours(forWage: wage, andPrice: price))"
+            }
+        }
     }
 
 
